@@ -37,26 +37,28 @@
           mapTypeId: google.maps.MapTypeId.HYBRID
         });
 
-        var georssLayer = new google.maps.KmlLayer({
-          //url: 'https://www.rfs.nsw.gov.au/feeds/majorIncidents.xml',
-          url: 'https://intermernet.github.io/nswfires/doc.kml',
-          suppressInfoWindows: true,
-        //   map: map
-        });
-        google.maps.event.addListener(georssLayer, 'status_changed', function() {
-            console.log(georssLayer.getStatus());
-        })
-        georssLayer.setMap(map);
+        map.data.loadGeoJson('https://www.rfs.nsw.gov.au/feeds/majorIncidents.json');
 
-        georssLayer.addListener('click', function(kmlEvent) {
-          var text = kmlEvent.featureData.description;
-          showInContentWindow(text);
-        });
+        // var georssLayer = new google.maps.KmlLayer({
+        //   //url: 'https://www.rfs.nsw.gov.au/feeds/majorIncidents.xml',
+        //   url: 'https://intermernet.github.io/nswfires/doc.kml',
+        //   suppressInfoWindows: true,
+        // //   map: map
+        // });
+        // google.maps.event.addListener(georssLayer, 'status_changed', function() {
+        //     console.log(georssLayer.getStatus());
+        // })
+        // georssLayer.setMap(map);
 
-        function showInContentWindow(text) {
-          var sidediv = document.getElementById('content-window');
-          sidediv.innerHTML = text;
-        }
+        // georssLayer.addListener('click', function(kmlEvent) {
+        //   var text = kmlEvent.featureData.description;
+        //   showInContentWindow(text);
+        // });
+
+        // function showInContentWindow(text) {
+        //   var sidediv = document.getElementById('content-window');
+        //   sidediv.innerHTML = text;
+        // }
       }
     </script>
     <script async defer
