@@ -38,8 +38,8 @@
 
         var ced = google.maps.event.addListener(map.data,'click',function(event) {       
             console.log(event.feature.getProperty('title'))
-            alert("Coordinates:lat: "+event.latLng.lat()+", lng: "+event.latLng.lng());
-            alert(event.feature.getProperty('title'));
+            //alert("Coordinates:lat: "+event.latLng.lat()+", lng: "+event.latLng.lng());
+            alert(event.feature.getProperty('title')+event.feature.getProperty('description'));
         });
       }
     </script>
