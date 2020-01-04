@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <title>NSW Fires</title>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
       }
+      #map {
+        float: left;
+        height: 425px;
+        width: 79%;
+      }
+      #content-window {
+        float: left;
+        font-family: 'Roboto','sans-serif';
+        height: 100%;
+        line-height: 30px;
+        padding-left: 10px;
+        width: 19%;
+      }
     </style>
   </head>
   <body>
     <div id="map"></div>
+    <div id="content-window"></div>
     <script>
+
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
@@ -28,9 +37,20 @@
         });
 
         var georssLayer = new google.maps.KmlLayer({
-          url: 'http://www.rfs.nsw.gov.au/feeds/majorIncidents.xml'
+          url: 'http://www.rfs.nsw.gov.au/feeds/majorIncidents.xml',
+          suppressInfoWindows: true,
+          map: map
         });
-        georssLayer.setMap(map);
+
+        georssLayer.addListener('click', function(kmlEvent) {
+          var text = kmlEvent.featureData.description;
+          showInContentWindow(text);
+        });
+
+        function showInContentWindow(text) {
+          var sidediv = document.getElementById('content-window');
+          sidediv.innerHTML = text;
+        }
       }
     </script>
     <script async defer
