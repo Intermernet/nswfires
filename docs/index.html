@@ -38,33 +38,12 @@
         });
 
         map.data.setStyle({
+          icon: 'flame.png',
           fillColor: 'red',
           strokeWeight: 1
         });
 
-        map.data.loadGeoJson('https://cors-anywhere.herokuapp.com/https://www.rfs.nsw.gov.au/feeds/majorIncidents.json');
-        //map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json');
-
-        // var georssLayer = new google.maps.KmlLayer({
-        //   //url: 'https://www.rfs.nsw.gov.au/feeds/majorIncidents.xml',
-        //   url: 'https://intermernet.github.io/nswfires/doc.kml',
-        //   suppressInfoWindows: true,
-        // //   map: map
-        // });
-        // google.maps.event.addListener(georssLayer, 'status_changed', function() {
-        //     console.log(georssLayer.getStatus());
-        // })
-        // georssLayer.setMap(map);
-
-        // georssLayer.addListener('click', function(kmlEvent) {
-        //   var text = kmlEvent.featureData.description;
-        //   showInContentWindow(text);
-        // });
-
-        // function showInContentWindow(text) {
-        //   var sidediv = document.getElementById('content-window');
-        //   sidediv.innerHTML = text;
-        // }
+        map.data.loadGeoJson('https://https://intermernet.github.io/nswfires/majorIncidents.json');
       }
     </script>
     <script async defer
