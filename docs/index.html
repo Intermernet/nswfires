@@ -39,9 +39,12 @@
         var georssLayer = new google.maps.KmlLayer({
           url: 'https://www.rfs.nsw.gov.au/feeds/majorIncidents.xml',
           //url: 'https://intermernet.github.io/nswfires//majorIncidents.xml',
-          suppressInfoWindows: true,
+          //suppressInfoWindows: true,
         //   map: map
         });
+        google.maps.event.addListener(georssLayer, 'status_changed', function() {
+            console.log(georssLayer.getStatus());
+        })
         georssLayer.setMap(map);
 
         georssLayer.addListener('click', function(kmlEvent) {
