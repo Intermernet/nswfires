@@ -35,6 +35,12 @@
         });
 
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json');
+
+        var ced = google.maps.event.addListener(map.data,'click',function(event) {       
+            console.log(event.feature.getProperty('name'))
+            alert("Coordinates:lat: "+event.latLng.lat()+", lng: "+event.latLng.lng());
+            alert(event.feature.getProperty('name'));
+        });
       }
     </script>
     <script async defer
