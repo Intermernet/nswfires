@@ -37,9 +37,9 @@
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json');
 
         var ced = google.maps.event.addListener(map.data,'click',function(event) {       
-            console.log(event.feature.getProperty('name'))
+            console.log(event.feature.getProperty('title'))
             alert("Coordinates:lat: "+event.latLng.lat()+", lng: "+event.latLng.lng());
-            alert(event.feature.getProperty('name'));
+            alert(event.feature.getProperty('title'));
         });
       }
     </script>
