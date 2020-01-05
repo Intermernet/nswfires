@@ -1,6 +1,5 @@
 #!/bin/bash
 
-whoami
 cd ~mike/nswfires
 git pull
 curl http://www.rfs.nsw.gov.au/feeds/majorIncidents.json -o ~mike/nswfires/docs/majorIncidents.json
