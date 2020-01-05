@@ -47,9 +47,10 @@
             infowindow.setOptions({pixelOffset: new google.maps.Size(0,-34)});
             infowindow.open(map);
         });
+
+        setInterval(map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json'), 10000)
       }
 
-      setInterval(initMap, 600000)
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCorrjMCGHzalCd2k-sGSUBN_vC0yupfBw&callback=initMap">
