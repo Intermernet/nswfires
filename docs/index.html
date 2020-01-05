@@ -36,14 +36,14 @@
 
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json');
 
-        var infowindow = new google.maps.InfoWindow();
-
-        var ced = google.maps.event.addListener(map.data,'click',function(event) {       
-            //console.log(event.feature.getProperty('title'))
-            //alert("Coordinates:lat: "+event.latLng.lat()+", lng: "+event.latLng.lng());
-            infowindow.setContent(event.feature.getProperty('title')+event.feature.getProperty('description'))
+        map.data.addListener('click', function(event) {
+            var feat = event.feature;
+            var html = "<b>"+feat.getProperty('title')+"</b><br>"+feat.getProperty('description');
+            html += "<br><a class='normal_link' target='_blank' href='"+feat.getProperty('link')+"'>link</a>";
+            infowindow.setContent(html);
+            infowindow.setPosition(event.latLng);
+            infowindow.setOptions({pixelOffset: new google.maps.Size(0,-34)});
             infowindow.open(map);
-            //alert(event.feature.getProperty('title')+event.feature.getProperty('description'));
         });
       }
     </script>
