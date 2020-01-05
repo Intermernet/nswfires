@@ -21,9 +21,6 @@
     <div id="map"></div>
     <script>
 
-      var map;
-      var infowindow;
-
       function initMap() {
         
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -52,8 +49,6 @@
             infowindow.open(map);
         });
       }
-
-      setInterval(map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json'), 10000)
 
     </script>
     <script async defer
