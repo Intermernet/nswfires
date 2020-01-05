@@ -50,13 +50,13 @@
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/features.json');
 
         // Create markers.
-        for (var i = 0; i < map.features.length; i++) {
+        for (var i = 0; i < map.data.features.length; i++) {
           var type = fire;
-          if (features[i].id.startsWith('hotspots_three_days')) {
+          if (map.data.features[i].id.startsWith('hotspots_three_days')) {
               type = hotspot;
           }
           var marker = new google.maps.Marker({
-            position: features[i].position,
+            position: map.data.features[i].position,
             icon: icons[type].icon,
             map: map
           });
