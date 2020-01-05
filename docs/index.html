@@ -55,8 +55,8 @@
           map: map
         });
 
-        google.maps.event.addListener(KmlLayer,'status_changed',function(){
-            console.log(KmlLayer.getStatus());
+        google.maps.event.addListener(kmlLayer,'status_changed',function(){
+            console.log(kmlLayer.getStatus());
         });
 
         var trafficLayer = new google.maps.TrafficLayer();
