@@ -33,67 +33,34 @@
         var infowindow = new google.maps.InfoWindow();
 
         map.data.setStyle({
-          //icon: 'flame.png',
           fillColor: 'red',
           strokeWeight: 1
         });
 
-        // var icons = {
-        //   fire: {
-        //     icon: 'flame.png'
-        //   },
-        //   hospot: {
-        //     icon: 'hotspot.png'
-        //   }
-        // };
-
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json', null, function(features){
             for (var i = 0; i < features.length; i++) {
-                //features[i].icon = 'flame.png';
                 map.data.overrideStyle(features[i], {icon: 'flame.png'});
             }
             console.log(features);
         });
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/features.json', null, function(features){
             for (var i = 0; i < features.length; i++) {
-                //features[i].icon = 'hotspot.png';
-                map.data.overrideStyle(features[i], {icon: 'hotspot.png'});
+               map.data.overrideStyle(features[i], {icon: 'hotspot.png'});
             }
             console.log(features);
         });
 
-        // // Create markers.
-        // for (var i = 0; i < map.features.length; i++) {
-        //   var type = fire;
-        //   if (map.features[i].id.startsWith('hotspots_three_days')) {
-        //       type = hotspot;
-        //   }
-        //   var marker = new google.maps.Marker({
-        //     position: map.features[i].position,
-        //     icon: icons[type].icon,
-        //     map: map
-        //   });
-        // };
-
         map.data.addListener('click', function(event) {
             var feat = event.feature;
-            var html = "<b>"+feat.getProperty('title')+"</b><br>"+feat.getProperty('description');
-            html += "<br><a class='normal_link' target='_blank' href='"+feat.getProperty('link')+"'>link</a>";
-            infowindow.setContent(html);
-            infowindow.setPosition(event.latLng);
-            infowindow.setOptions({pixelOffset: new google.maps.Size(0,-34)});
-            infowindow.open(map);
+            if (!feat.i.startsWith('hotspots_three_days')) {
+                var html = "<b>"+feat.getProperty('title')+"</b><br>"+feat.getProperty('description');
+                html += "<br><a class='normal_link' target='_blank' href='"+feat.getProperty('link')+"'>link</a>";
+                infowindow.setContent(html);
+                infowindow.setPosition(event.latLng);
+                infowindow.setOptions({pixelOffset: new google.maps.Size(0,-34)});
+                infowindow.open(map);
+            }
         });
-
-        // var kmlLayer = new google.maps.KmlLayer('https://intermernet.github.io/nswfires/public-hotspots_three_days.kmz', {
-        //   suppressInfoWindows: true,
-        //   preserveViewport: false,
-        //   map: map
-        // });
-
-        // google.maps.event.addListener(kmlLayer,'status_changed',function(){
-        //     console.log(kmlLayer.getStatus());
-        // });
 
         var trafficLayer = new google.maps.TrafficLayer();
         trafficLayer.setMap(map);
