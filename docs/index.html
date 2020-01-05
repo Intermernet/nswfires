@@ -20,15 +20,16 @@
   <body>
     <div id="map"></div>
     <script>
+        
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: {lat: -33.0, lng: 149.0},
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    });
+
+    var infowindow = new google.maps.InfoWindow();
 
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {lat: -33.0, lng: 149.0},
-          mapTypeId: google.maps.MapTypeId.HYBRID
-        });
-
-        var infowindow = new google.maps.InfoWindow();
 
         map.data.setStyle({
           icon: 'flame.png',
@@ -47,9 +48,9 @@
             infowindow.setOptions({pixelOffset: new google.maps.Size(0,-34)});
             infowindow.open(map);
         });
-
-        setInterval(map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json'), 10000)
       }
+
+      setInterval(map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json'), 10000)
 
     </script>
     <script async defer
