@@ -5,7 +5,6 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
-	"time"
 )
 
 // clean_hotspots removes all non-NSW hotspot entries from the GeoJSON file retrieved from
@@ -18,7 +17,7 @@ type GeoJSON struct {
 	TotalFeatures  int        `json:"totalFeatures"`
 	NumberMatched  int        `json:"numberMatched"`
 	NumberReturned int        `json:"numberReturned"`
-	TimeStamp      time.Time  `json:"timeStamp"`
+	TimeStamp      string     `json:"timeStamp"`
 	Crs            Crs        `json:"crs"`
 }
 
@@ -36,18 +35,18 @@ type Properties struct {
 	SatelliteOperatingAgency string      `json:"satellite_operating_agency"`
 	Sensor                   string      `json:"sensor"`
 	Orbit                    int         `json:"orbit"`
-	StartDt                  time.Time   `json:"start_dt"`
-	StopDt                   time.Time   `json:"stop_dt"`
+	StartDt                  string      `json:"start_dt"`
+	StopDt                   string      `json:"stop_dt"`
 	Filename                 string      `json:"filename"`
-	ProcessDt                time.Time   `json:"process_dt"`
+	ProcessDt                string      `json:"process_dt"`
 	ProcessAlgorithm         string      `json:"process_algorithm"`
 	ProcessAlgorithmVersion  string      `json:"process_algorithm_version"`
 	Product                  string      `json:"product"`
-	LoadDt                   time.Time   `json:"load_dt"`
+	LoadDt                   string      `json:"load_dt"`
 	Latitude                 float64     `json:"latitude"`
 	Longitude                float64     `json:"longitude"`
 	TempKelvin               float64     `json:"temp_kelvin"`
-	Datetime                 time.Time   `json:"datetime"`
+	Datetime                 string      `json:"datetime"`
 	Power                    float64     `json:"power"`
 	Confidence               int         `json:"confidence"`
 	AustralianState          string      `json:"australian_state"`
