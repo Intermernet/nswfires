@@ -51,11 +51,13 @@
             for (var i = 0; i < features.length; i++) {
                 features[i].icon = 'flame.png';
             }
+            console.log(features);
         });
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/features.json', null, function(features){
             for (var i = 0; i < features.length; i++) {
                 features[i].icon = 'hotspot.png';
             }
+            console.log(features);
         });
 
         // // Create markers.
