@@ -38,7 +38,6 @@
         });
 
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json');
-        map.data.loadGeoJson('https://intermernet.github.io/nswfires/fire.json');
 
         map.data.addListener('click', function(event) {
             var feat = event.feature;
@@ -49,6 +48,9 @@
             infowindow.setOptions({pixelOffset: new google.maps.Size(0,-34)});
             infowindow.open(map);
         });
+
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
       }
 
     </script>
