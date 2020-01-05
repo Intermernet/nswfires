@@ -91,7 +91,7 @@ func main() {
 	}
 	fs := make([]Features, 0)
 	for _, f := range j.Features {
-		if f.Properties.AustralianState == "NSW" {
+		if f.Properties.AustralianState == "NSW" && (f.Properties.TempKelvin <= 24.0 && f.Properties.TempKelvin > 0.0) {
 			fs = append(fs, f)
 		}
 	}
