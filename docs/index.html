@@ -42,13 +42,11 @@
                 features[i].id = 'fire-'+i;
                 map.data.overrideStyle(features[i], {icon: 'flame.png'});
             }
-            console.log(features);
         });
         map.data.loadGeoJson('https://intermernet.github.io/nswfires/features.json', undefined, function(features){
             for (var i = 0; i < features.length; i++) {
                map.data.overrideStyle(features[i], {icon: 'hotspot.png'});
             }
-            console.log(features);
         });
 
         map.data.addListener('click', function(event) {
