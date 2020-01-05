@@ -37,7 +37,7 @@
           strokeWeight: 1
         });
 
-        map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json', {idPropertyName : title}, function(features){
+        map.data.loadGeoJson('https://intermernet.github.io/nswfires/majorIncidents.json', {idPropertyName : 'title'}, function(features){
             for (var i = 0; i < features.length; i++) {
                 map.data.overrideStyle(features[i], {icon: 'flame.png'});
             }
@@ -52,7 +52,8 @@
 
         map.data.addListener('click', function(event) {
             var feat = event.feature;
-            if (!feat.i.startsWith('hotspots_three_days')) {
+            console.log.feat
+            if (!feat.id.startsWith('hotspots_three_days')) {
                 var html = "<b>"+feat.getProperty('title')+"</b><br>"+feat.getProperty('description');
                 html += "<br><a class='normal_link' target='_blank' href='"+feat.getProperty('link')+"'>link</a>";
                 infowindow.setContent(html);
